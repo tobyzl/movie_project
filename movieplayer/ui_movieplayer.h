@@ -25,25 +25,26 @@ QT_BEGIN_NAMESPACE
 class Ui_movieplayer
 {
 public:
+    QWidget *centralWidget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QWidget *centralWidget;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *movieplayer)
     {
         if (movieplayer->objectName().isEmpty())
             movieplayer->setObjectName(QStringLiteral("movieplayer"));
-        movieplayer->resize(400, 300);
-        menuBar = new QMenuBar(movieplayer);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        movieplayer->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(movieplayer);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        movieplayer->addToolBar(mainToolBar);
+        movieplayer->resize(489, 308);
         centralWidget = new QWidget(movieplayer);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         movieplayer->setCentralWidget(centralWidget);
+        menuBar = new QMenuBar(movieplayer);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 489, 21));
+        movieplayer->setMenuBar(menuBar);
+        mainToolBar = new QToolBar(movieplayer);
+        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        movieplayer->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(movieplayer);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         movieplayer->setStatusBar(statusBar);

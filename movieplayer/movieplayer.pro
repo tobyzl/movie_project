@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia winextras multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,8 +13,21 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        movieplayer.cpp
+        movieplayer.cpp \
+    showmovie.cpp \
+    thread.cpp
 
-HEADERS  += movieplayer.h
+LIBS += -LF:\Movie\Qt_MP4\lib\lib -lSE_AudioCodec -lSE_MP4 -lSE_VideoCodec
+
+win32{
+
+}
+
+#头文件包含路�
+INCLUDEPATH += ../Qt_MP4/lib/includ
+
+HEADERS  += movieplayer.h \
+    showmovie.h \
+    thread.h
 
 FORMS    += movieplayer.ui

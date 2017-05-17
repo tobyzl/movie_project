@@ -1,0 +1,14 @@
+FileInfo
+
+eVideoAVCodecID = 2
+nVideoWidth = 640
+nVideoHeight = 360
+
+eAudioAVCodecID = 259
+nAudioSamplerate = 16000
+nAudioDatabit = 16
+nAudioChannels = 1
+
+nDurationInSecond = 89
+nFileSizeInByte = 3544523
+reserve = 

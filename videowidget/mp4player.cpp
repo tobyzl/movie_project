@@ -69,6 +69,7 @@ MP4Player::MP4Player(QWidget *parent)
             this, SLOT(setPosition(int)));
 
     lineEdit = new QLineEdit;
+    m_lab_show = new QLabel;
 
     QBoxLayout *controlLayout = new QHBoxLayout;
     controlLayout->setMargin(0);
@@ -80,7 +81,7 @@ MP4Player::MP4Player(QWidget *parent)
     searchLayout->addWidget(searchButton);
 
     QBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(videoWidget);
+    layout->addWidget(m_lab_show);
     layout->addLayout(controlLayout);
     layout->addLayout(searchLayout);
 
@@ -105,7 +106,11 @@ void MP4Player::openFile()
         lineEdit->setText(fileName);
 
         videoPlayer.setMedia(fileName);
-        videoPlayer.play();
+        QImage image = videoPlayer.play();
+
+        QPixmap pixmap = QPixmap::fromImage(image.scaled(m_lab_show->size(), Qt::KeepAspectRatio) );
+      //  m_lab_show->resize(640, 360);
+        m_lab_show->setPixmap(pixmap);
 
         playButton->setEnabled(true);
     }

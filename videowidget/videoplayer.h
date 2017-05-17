@@ -20,7 +20,7 @@ public:
 
 public slots:
     void setMedia(QString filename);
-    void play();
+    QImage play();
 
 private slots:
 

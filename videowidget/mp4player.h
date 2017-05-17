@@ -73,6 +73,7 @@ private:
     QAbstractButton *playButton;
     QSlider *positionSlider;
     QLineEdit *lineEdit;
+    QLabel *m_lab_show;
 };
 
 #endif

@@ -59,7 +59,7 @@ static const uint qt_meta_data_VideoPlayer[] = {
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
-    QMetaType::Void,
+    QMetaType::QImage,
 
        0        // eod
 };
@@ -71,7 +71,8 @@ void VideoPlayer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setMedia((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->play(); break;
+        case 1: { QImage _r = _t->play();
+            if (_a[0]) *reinterpret_cast< QImage*>(_a[0]) = _r; }  break;
         default: ;
         }
     }

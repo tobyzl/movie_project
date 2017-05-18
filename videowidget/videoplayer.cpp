@@ -18,7 +18,7 @@ void VideoPlayer::setMedia(QString filename)
     m_filename = filename;
 }
 
-void printText(FILE_INFO FileInfo)
+void printTex(FILE_INFO FileInfo)
 {
     QFile file("fileinfo.txt");
 
@@ -60,7 +60,7 @@ QImage VideoPlayer::play()
     pFilename = m_filename.toLocal8Bit().data();
     FILE_INFO FileInfo;
     INT32 ret = SEMP4Read_OpenMp4File(pHandle, pFilename, &FileInfo);
-    printText(FileInfo);
+    printTex(FileInfo);
     if (ret < 0)
     {
         qDebug() << "SEMP4Read_OpenMp4File failed" << endl;
@@ -88,8 +88,6 @@ QImage VideoPlayer::play()
     UCHAR pBuf[nBufMaxSize];
     INT32 size =  SEMP4Read_ReadOneFrame(pHandle, pBuf, nBufMaxSize);
     qDebug() << endl << "size " << size << endl;
-
-
 
     UCHAR *ppHandle = NULL;
     UINT32 ok = SEVideo_Create(1, &ppHandle);

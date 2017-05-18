@@ -44,19 +44,19 @@ OBJECTS_DIR   = release
 ####### Files
 
 SOURCES       = main.cpp \
-		videoplayer.cpp \
-		mp4player.cpp release\moc_videoplayer.cpp \
-		release\moc_mp4player.cpp
+		mp4player.cpp \
+		videothread.cpp release\moc_mp4player.cpp \
+		release\moc_videothread.cpp
 OBJECTS       = release/main.o \
-		release/videoplayer.o \
 		release/mp4player.o \
-		release/moc_videoplayer.o \
-		release/moc_mp4player.o
+		release/videothread.o \
+		release/moc_mp4player.o \
+		release/moc_videothread.o
 
-DIST          =  videoplayer.h \
-		mp4player.h main.cpp \
-		videoplayer.cpp \
-		mp4player.cpp
+DIST          =  mp4player.h \
+		videothread.h main.cpp \
+		mp4player.cpp \
+		videothread.cpp
 QMAKE_TARGET  = mp4player
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = mp4player.exe
@@ -79,7 +79,7 @@ dist:
 	$(ZIP) mp4player.zip $(SOURCES) $(DIST) mp4.pro E:\zl\install\5.6\mingw49_32\mkspecs\features\spec_pre.prf E:\zl\install\5.6\mingw49_32\mkspecs\qdevice.pri E:\zl\install\5.6\mingw49_32\mkspecs\features\device_config.prf E:\zl\install\5.6\mingw49_32\mkspecs\common\angle.conf E:\zl\install\5.6\mingw49_32\mkspecs\qconfig.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dcore.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dcore_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dinput.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dinput_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dlogic.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dlogic_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dquick.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dquick_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dquickinput.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dquickinput_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dquickrender.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3dquickrender_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3drender.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_3drender_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_axbase.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_axbase_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_axcontainer.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_axcontainer_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_axserver.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_axserver_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_bluetooth.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_bluetooth_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_bootstrap_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_clucene_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_concurrent.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_concurrent_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_core.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_core_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_dbus.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_dbus_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_designer.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_designer_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_designercomponents_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_gui.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_gui_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_help.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_help_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_labscontrols_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_labstemplates_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_location.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_location_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_multimedia.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_multimedia_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_multimediawidgets.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_network.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_network_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_nfc.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_nfc_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_opengl.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_opengl_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_openglextensions.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_openglextensions_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_platformsupport_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_positioning.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_positioning_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_printsupport.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_printsupport_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_qml.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_qml_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_qmldevtools_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_qmltest.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_qmltest_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_quick.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_quick_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_quickparticles_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_quickwidgets.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_quickwidgets_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_script.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_script_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_scripttools.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_scripttools_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_sensors.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_sensors_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_serialbus.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_serialbus_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_serialport.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_serialport_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_sql.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_sql_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_svg.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_svg_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_testlib.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_testlib_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_uiplugin.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_uitools.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_uitools_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_webchannel.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_webchannel_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_websockets.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_websockets_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_widgets.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_widgets_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_winextras.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_winextras_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_xml.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_xml_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_xmlpatterns.pri E:\zl\install\5.6\mingw49_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri E:\zl\install\5.6\mingw49_32\mkspecs\features\qt_functions.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\qt_config.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\win32\qt_config.prf E:\zl\install\5.6\mingw49_32\mkspecs\win32-g++\qmake.conf E:\zl\install\5.6\mingw49_32\mkspecs\features\spec_post.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\exclusive_builds.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\default_pre.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\win32\default_pre.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\resolve_config.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\exclusive_builds_post.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\default_post.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\build_pass.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\win32\rtti.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\precompile_header.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\warn_on.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\qt.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\resources.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\moc.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\win32\opengl.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\uic.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\win32\windows.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\testcase_targets.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\exceptions.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\yacc.prf E:\zl\install\5.6\mingw49_32\mkspecs\features\lex.prf mp4.pro E:\zl\install\5.6\mingw49_32\lib\qtmain.prl E:\zl\install\5.6\mingw49_32\lib\Qt5MultimediaWidgets.prl E:\zl\install\5.6\mingw49_32\lib\Qt5Multimedia.prl E:\zl\install\5.6\mingw49_32\lib\Qt5Widgets.prl E:\zl\install\5.6\mingw49_32\lib\Qt5Gui.prl E:\zl\install\5.6\mingw49_32\lib\Qt5Network.prl E:\zl\install\5.6\mingw49_32\lib\Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\videoplayer.o release\mp4player.o release\moc_videoplayer.o release\moc_mp4player.o
+	-$(DEL_FILE) release\main.o release\mp4player.o release\videothread.o release\moc_mp4player.o release\moc_videothread.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -95,149 +95,9 @@ compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: release/moc_videoplayer.cpp release/moc_mp4player.cpp
+compiler_moc_header_make_all: release/moc_mp4player.cpp release/moc_videothread.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_videoplayer.cpp release\moc_mp4player.cpp
-release/moc_videoplayer.cpp: E:/zl/install/5.6/mingw49_32/include/QtWidgets/QMainWindow \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmainwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobal.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qconfig.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfeatures.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsystemdetection.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qprocessordetection.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcompilerdetection.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypeinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypetraits.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qisenum.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsysinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlogging.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qflags.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbasicatomic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_bootstrap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qgenericatomic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_cxx11.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_gcc.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_msvc.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv7.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv6.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv5.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_ia64.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_x86.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_unix.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobalstatic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmutex.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qnumeric.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qversiontagging.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qnamespace.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs_impl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstring.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qchar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearray.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qrefcount.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qarraydata.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringbuilder.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qalgorithms.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qiterator.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qhashfunctions.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpair.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearraylist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringlist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qregexp.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringmatcher.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcoreevent.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qscopedpointer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmetatype.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qvarlengtharray.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontainerfwd.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject_impl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmargins.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qrect.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsize.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpoint.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpalette.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qcolor.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgb.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgba64.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qbrush.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qvector.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qmatrix.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpolygon.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qregion.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qdatastream.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qiodevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qline.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtransform.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpainterpath.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qimage.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixelformat.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixmap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qshareddata.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qhash.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qfont.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qcursor.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qkeysequence.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qevent.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qvariant.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qdebug.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtextstream.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlocale.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qset.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qurl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qurlquery.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfile.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfiledevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qvector2d.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qicon.h \
-		../Qt_MP4/lib/includ/mp4.h \
-		../Qt_MP4/lib/includ/SEP2P_Type.h \
-		../Qt_MP4/lib/includ/SE_VideoCodec.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaplayer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qtmultimediadefs.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmultimedia.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediacontent.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaresource.h \
-		E:/zl/install/5.6/mingw49_32/include/QtNetwork/qnetworkrequest.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QSharedDataPointer \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QString \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QUrl \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QVariant \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaenumdebug.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmetaobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qaudio.h \
-		E:/zl/install/5.6/mingw49_32/include/QtNetwork/qnetworkconfiguration.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QMovie \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qmovie.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qimagereader.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcoreapplication.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qeventloop.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qimageiohandler.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qplugin.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpointer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qjsonobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qjsonvalue.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfactoryinterface.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QWidget \
-		videoplayer.h
-	E:\zl\install\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IE:/zl/install/5.6/mingw49_32/mkspecs/win32-g++ -IF:/Movie/videowidget -IF:/Movie/Qt_MP4/lib/includ -IE:/zl/install/5.6/mingw49_32/include -IE:/zl/install/5.6/mingw49_32/include/QtMultimediaWidgets -IE:/zl/install/5.6/mingw49_32/include/QtMultimedia -IE:/zl/install/5.6/mingw49_32/include/QtWidgets -IE:/zl/install/5.6/mingw49_32/include/QtGui -IE:/zl/install/5.6/mingw49_32/include/QtANGLE -IE:/zl/install/5.6/mingw49_32/include/QtNetwork -IE:/zl/install/5.6/mingw49_32/include/QtCore videoplayer.h -o release\moc_videoplayer.cpp
-
+	-$(DEL_FILE) release\moc_mp4player.cpp release\moc_videothread.cpp
 release/moc_mp4player.cpp: E:/zl/install/5.6/mingw49_32/include/QtGui/QMovie \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qmovie.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject.h \
@@ -383,15 +243,132 @@ release/moc_mp4player.cpp: E:/zl/install/5.6/mingw49_32/include/QtGui/QMovie \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextformat.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qpen.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextoption.h \
-		videoplayer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QMainWindow \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmainwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabwidget.h \
+		videothread.h \
 		../Qt_MP4/lib/includ/mp4.h \
 		../Qt_MP4/lib/includ/SEP2P_Type.h \
 		../Qt_MP4/lib/includ/SE_VideoCodec.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QThread \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qthread.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/QImage \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QFile \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QDebug \
 		mp4player.h
 	E:\zl\install\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IE:/zl/install/5.6/mingw49_32/mkspecs/win32-g++ -IF:/Movie/videowidget -IF:/Movie/Qt_MP4/lib/includ -IE:/zl/install/5.6/mingw49_32/include -IE:/zl/install/5.6/mingw49_32/include/QtMultimediaWidgets -IE:/zl/install/5.6/mingw49_32/include/QtMultimedia -IE:/zl/install/5.6/mingw49_32/include/QtWidgets -IE:/zl/install/5.6/mingw49_32/include/QtGui -IE:/zl/install/5.6/mingw49_32/include/QtANGLE -IE:/zl/install/5.6/mingw49_32/include/QtNetwork -IE:/zl/install/5.6/mingw49_32/include/QtCore mp4player.h -o release\moc_mp4player.cpp
+
+release/moc_videothread.cpp: ../Qt_MP4/lib/includ/mp4.h \
+		../Qt_MP4/lib/includ/SEP2P_Type.h \
+		../Qt_MP4/lib/includ/SE_VideoCodec.h \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QWidget \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qwidget.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobal.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qconfig.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qfeatures.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsystemdetection.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qprocessordetection.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcompilerdetection.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypeinfo.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypetraits.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qisenum.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsysinfo.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qlogging.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qflags.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qbasicatomic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_bootstrap.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qgenericatomic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_cxx11.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_gcc.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_msvc.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv7.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv6.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv5.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_ia64.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_x86.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_unix.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobalstatic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmutex.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qnumeric.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qversiontagging.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qnamespace.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs_impl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstring.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qchar.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearray.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qrefcount.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qarraydata.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringbuilder.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qlist.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qalgorithms.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qiterator.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qhashfunctions.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qpair.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearraylist.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringlist.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qregexp.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringmatcher.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcoreevent.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qscopedpointer.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmetatype.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qvarlengtharray.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontainerfwd.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject_impl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmargins.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qrect.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsize.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qpoint.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpalette.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qcolor.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgb.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgba64.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qbrush.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qvector.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qmatrix.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpolygon.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qregion.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qdatastream.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qiodevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qline.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qtransform.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpainterpath.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qimage.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixelformat.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixmap.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qshareddata.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qhash.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qfont.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontinfo.h \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qcursor.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qkeysequence.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qevent.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qvariant.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmap.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qdebug.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qtextstream.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qlocale.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qset.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qurl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qurlquery.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qfile.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qfiledevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qvector2d.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QThread \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qthread.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/QImage \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QFile \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QDebug \
+		videothread.h
+	E:\zl\install\5.6\mingw49_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IE:/zl/install/5.6/mingw49_32/mkspecs/win32-g++ -IF:/Movie/videowidget -IF:/Movie/Qt_MP4/lib/includ -IE:/zl/install/5.6/mingw49_32/include -IE:/zl/install/5.6/mingw49_32/include/QtMultimediaWidgets -IE:/zl/install/5.6/mingw49_32/include/QtMultimedia -IE:/zl/install/5.6/mingw49_32/include/QtWidgets -IE:/zl/install/5.6/mingw49_32/include/QtGui -IE:/zl/install/5.6/mingw49_32/include/QtANGLE -IE:/zl/install/5.6/mingw49_32/include/QtNetwork -IE:/zl/install/5.6/mingw49_32/include/QtCore videothread.h -o release\moc_videothread.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -555,496 +532,21 @@ release/main.o: main.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextformat.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qpen.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextoption.h \
-		videoplayer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QMainWindow \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmainwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabwidget.h \
+		videothread.h \
 		../Qt_MP4/lib/includ/mp4.h \
 		../Qt_MP4/lib/includ/SEP2P_Type.h \
 		../Qt_MP4/lib/includ/SE_VideoCodec.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QThread \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qthread.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/QImage \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QFile \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QDebug \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QApplication \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qapplication.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdesktopwidget.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qguiapplication.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
-
-release/videoplayer.o: videoplayer.cpp videoplayer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QMainWindow \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmainwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobal.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qconfig.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfeatures.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsystemdetection.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qprocessordetection.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcompilerdetection.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypeinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypetraits.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qisenum.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsysinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlogging.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qflags.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbasicatomic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_bootstrap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qgenericatomic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_cxx11.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_gcc.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_msvc.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv7.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv6.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv5.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_ia64.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_x86.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_unix.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobalstatic.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmutex.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qnumeric.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qversiontagging.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qnamespace.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs_impl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstring.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qchar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearray.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qrefcount.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qarraydata.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringbuilder.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qalgorithms.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qiterator.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qhashfunctions.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpair.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearraylist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringlist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qregexp.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringmatcher.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcoreevent.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qscopedpointer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmetatype.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qvarlengtharray.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontainerfwd.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject_impl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmargins.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qrect.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsize.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpoint.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpalette.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qcolor.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgb.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgba64.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qbrush.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qvector.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qmatrix.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpolygon.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qregion.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qdatastream.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qiodevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qline.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtransform.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpainterpath.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qimage.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixelformat.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixmap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qshareddata.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qhash.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qfont.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qcursor.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qkeysequence.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qevent.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qvariant.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qdebug.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtextstream.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlocale.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qset.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qurl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qurlquery.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfile.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfiledevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qvector2d.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qicon.h \
-		../Qt_MP4/lib/includ/mp4.h \
-		../Qt_MP4/lib/includ/SEP2P_Type.h \
-		../Qt_MP4/lib/includ/SE_VideoCodec.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaplayer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qtmultimediadefs.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmultimedia.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediacontent.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaresource.h \
-		E:/zl/install/5.6/mingw49_32/include/QtNetwork/qnetworkrequest.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QSharedDataPointer \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QString \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QUrl \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QVariant \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediaenumdebug.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmetaobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qaudio.h \
-		E:/zl/install/5.6/mingw49_32/include/QtNetwork/qnetworkconfiguration.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QMovie \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qmovie.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qimagereader.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcoreapplication.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qeventloop.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qimageiohandler.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qplugin.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpointer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qjsonobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qjsonvalue.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfactoryinterface.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QWidget \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QtWidgets \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QtWidgetsDepends \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QtCore \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QtCoreDepends \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qabstractanimation.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qanimationgroup.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qparallelanimationgroup.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpauseanimation.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpropertyanimation.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qvariantanimation.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qeasingcurve.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsequentialanimationgroup.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtextcodec.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qendian.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlibraryinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qdatetime.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbuffer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qdir.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfileinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qdiriterator.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfileselector.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QObject \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QStringList \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfilesystemwatcher.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlockfile.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qloggingcategory.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qprocess.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qresource.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsavefile.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsettings.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstandardpaths.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstorageinfo.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtemporarydir.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QScopedPointer \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtemporaryfile.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qabstractitemmodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qabstractproxymodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qidentityproxymodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qitemselectionmodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsortfilterproxymodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringlistmodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qjsonarray.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qjsondocument.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qabstracteventdispatcher.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qabstractnativeeventfilter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbasictimer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmath.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmimedata.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectcleanuphandler.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedmemory.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsignalmapper.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsocketnotifier.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsystemsemaphore.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtimer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtranslator.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qwineventnotifier.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmimedatabase.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmimetype.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlibrary.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qpluginloader.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/quuid.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qabstractstate.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qabstracttransition.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qeventtransition.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfinalstate.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qhistorystate.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsignaltransition.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstate.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstatemachine.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qexception.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfuture.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfutureinterface.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qrunnable.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qresultstore.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfuturesynchronizer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qfuturewatcher.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qreadwritelock.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qsemaphore.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qthread.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qthreadpool.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qthreadstorage.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qwaitcondition.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qarraydataops.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qarraydatapointer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbitarray.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearraymatcher.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcache.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcollator.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcommandlineoption.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcommandlineparser.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qcryptographichash.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qelapsedtimer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qlinkedlist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qmessageauthenticationcode.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qqueue.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qregularexpression.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qscopedvaluerollback.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qstack.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtextboundaryfinder.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtimeline.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtimezone.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qversionnumber.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qxmlstream.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qtcoreversion.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QtGui \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QtGuiDepends \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qaccessible.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qaccessiblebridge.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qaccessibleobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qaccessibleplugin.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qbitmap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qiconengine.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qiconengineplugin.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qimagewriter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpicture.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpictureformatplugin.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixmapcache.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qstandarditemmodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qclipboard.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qdrag.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qgenericplugin.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qgenericpluginfactory.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qguiapplication.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qinputmethod.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qoffscreensurface.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qsurface.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qsurfaceformat.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglcontext.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QSurfaceFormat \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopengl.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qt_windows.h \
-		E:/zl/install/5.6/mingw49_32/include/QtANGLE/GLES3/gl3.h \
-		E:/zl/install/5.6/mingw49_32/include/QtANGLE/GLES3/gl3platform.h \
-		E:/zl/install/5.6/mingw49_32/include/QtANGLE/KHR/khrplatform.h \
-		E:/zl/install/5.6/mingw49_32/include/QtANGLE/GLES2/gl2.h \
-		E:/zl/install/5.6/mingw49_32/include/QtANGLE/GLES2/gl2platform.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopengles2ext.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglext.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglversionfunctions.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QPaintDeviceWindow \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpaintdevicewindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QWindow \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QEvent \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QMargins \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QRect \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QPaintDevice \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QOpenGLContext \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QImage \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qrasterwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qscreen.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QList \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QSize \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QSizeF \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QTransform \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qsessionmanager.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qstylehints.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qgenericmatrix.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qmatrix4x4.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qvector3d.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qvector4d.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qquaternion.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglbuffer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopengldebug.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglextrafunctions.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglfunctions.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglframebufferobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglpaintdevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglpixeltransferoptions.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglshaderprogram.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopengltexture.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopengltimerquery.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qopenglvertexarrayobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qbackingstore.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpagedpaintdevice.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpagelayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpagesize.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpaintengine.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpainter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextoption.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpen.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qpdfwriter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qabstracttextdocumentlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextformat.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qglyphrun.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qrawfont.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontdatabase.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextcursor.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextdocument.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qstatictext.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qsyntaxhighlighter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextobject.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextdocumentfragment.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextdocumentwriter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextlist.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtexttable.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qdesktopservices.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qvalidator.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/qtguiversion.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qaccessiblewidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcolordialog.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdialog.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qerrormessage.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qfiledialog.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qfilesystemmodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qfontdialog.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qinputdialog.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlineedit.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qframe.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmessagebox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qprogressdialog.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qwizard.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicseffect.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicsanchorlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicsitem.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicslayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicslayoutitem.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicsgridlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicsitemanimation.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicslinearlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicsproxywidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicswidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicsscene.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicssceneevent.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicstransform.h \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QVector3D \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QMatrix4x4 \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgraphicsview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qscrollarea.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractscrollarea.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractitemdelegate.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstyleoption.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractspinbox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qslider.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractslider.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstyle.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabbar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qrubberband.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractitemview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcolumnview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdatawidgetmapper.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdirmodel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qfileiconprovider.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qheaderview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qitemdelegate.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qitemeditorfactory.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlistview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlistwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstyleditemdelegate.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtableview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtablewidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtreeview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtreewidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtreewidgetitemiterator.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qaction.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qactiongroup.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qapplication.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdesktopwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qboxlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlayoutitem.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgridlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qformlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QLayout \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgesture.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgesturerecognizer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qopenglwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qshortcut.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstackedlayout.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtooltip.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qwhatsthis.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qwidgetaction.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qkeyeventtransition.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmouseeventtransition.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcommonstyle.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdrawutil.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qproxystyle.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QCommonStyle \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstylefactory.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstylepainter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstyleplugin.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcolormap.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcompleter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qscroller.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QPointF \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QScrollerProperties \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qscrollerproperties.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/QMetaType \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsystemtrayicon.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qundogroup.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qundostack.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qundoview.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractbutton.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qbuttongroup.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcalendarwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcheckbox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcombobox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcommandlinkbutton.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qpushbutton.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdatetimeedit.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdial.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdialogbuttonbox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qdockwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qfocusframe.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qfontcombobox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgroupbox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qkeysequenceedit.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlabel.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlcdnumber.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmdiarea.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmdisubwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmenu.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmenubar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qplaintextedit.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtextedit.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qprogressbar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qradiobutton.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qscrollbar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsizegrip.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qspinbox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsplashscreen.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsplitter.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstackedwidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstatusbar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtextbrowser.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtoolbar.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtoolbox.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtoolbutton.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtwidgetsversion.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimediaWidgets/qvideowidget.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimediaWidgets/qtmultimediawidgetdefs.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qmediabindableinterface.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qvideosurfaceformat.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qvideoframe.h \
-		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qabstractvideobuffer.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\videoplayer.o videoplayer.cpp
 
 release/mp4player.o: mp4player.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/QMovie \
@@ -1192,13 +694,15 @@ release/mp4player.o: mp4player.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextformat.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qpen.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qtextoption.h \
-		videoplayer.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QMainWindow \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmainwindow.h \
-		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabwidget.h \
+		videothread.h \
 		../Qt_MP4/lib/includ/mp4.h \
 		../Qt_MP4/lib/includ/SEP2P_Type.h \
 		../Qt_MP4/lib/includ/SE_VideoCodec.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QThread \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qthread.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/QImage \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QFile \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QDebug \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QtWidgets \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QtWidgetsDepends \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/QtCore \
@@ -1277,7 +781,6 @@ release/mp4player.o: mp4player.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/qfuturewatcher.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/qreadwritelock.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/qsemaphore.h \
-		E:/zl/install/5.6/mingw49_32/include/QtCore/qthread.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/qthreadpool.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/qthreadstorage.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/qwaitcondition.h \
@@ -1348,7 +851,6 @@ release/mp4player.o: mp4player.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/QRect \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/QPaintDevice \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/QOpenGLContext \
-		E:/zl/install/5.6/mingw49_32/include/QtGui/QImage \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qrasterwindow.h \
 		E:/zl/install/5.6/mingw49_32/include/QtGui/qscreen.h \
 		E:/zl/install/5.6/mingw49_32/include/QtCore/QList \
@@ -1430,6 +932,7 @@ release/mp4player.o: mp4player.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractspinbox.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qstyle.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabbar.h \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qtabwidget.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qrubberband.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qabstractitemview.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qcolumnview.h \
@@ -1500,6 +1003,7 @@ release/mp4player.o: mp4player.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qgroupbox.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qkeysequenceedit.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qlcdnumber.h \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmainwindow.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmdiarea.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmdisubwindow.h \
 		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qmenu.h \
@@ -1528,11 +1032,126 @@ release/mp4player.o: mp4player.cpp mp4player.h \
 		E:/zl/install/5.6/mingw49_32/include/QtMultimedia/qabstractvideobuffer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mp4player.o mp4player.cpp
 
-release/moc_videoplayer.o: release/moc_videoplayer.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_videoplayer.o release\moc_videoplayer.cpp
+release/videothread.o: videothread.cpp videothread.h \
+		../Qt_MP4/lib/includ/mp4.h \
+		../Qt_MP4/lib/includ/SEP2P_Type.h \
+		../Qt_MP4/lib/includ/SE_VideoCodec.h \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/QWidget \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qwidget.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobal.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qconfig.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qfeatures.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsystemdetection.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qprocessordetection.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcompilerdetection.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypeinfo.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qtypetraits.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qisenum.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsysinfo.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qlogging.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qflags.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qbasicatomic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_bootstrap.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qgenericatomic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_cxx11.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_gcc.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_msvc.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv7.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv6.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_armv5.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_ia64.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_x86.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qatomic_unix.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qglobalstatic.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmutex.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qnumeric.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qversiontagging.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qnamespace.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobjectdefs_impl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qwindowdefs_win.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstring.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qchar.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearray.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qrefcount.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qarraydata.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringbuilder.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qlist.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qalgorithms.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qiterator.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qhashfunctions.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qpair.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qbytearraylist.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringlist.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qregexp.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qstringmatcher.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcoreevent.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qscopedpointer.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmetatype.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qvarlengtharray.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontainerfwd.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qobject_impl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmargins.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpaintdevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qrect.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsize.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qpoint.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpalette.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qcolor.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgb.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qrgba64.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qbrush.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qvector.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qmatrix.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpolygon.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qregion.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qdatastream.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qiodevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qline.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qtransform.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpainterpath.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qimage.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixelformat.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qpixmap.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qshareddata.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qhash.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qsharedpointer_impl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qfont.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontmetrics.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qfontinfo.h \
+		E:/zl/install/5.6/mingw49_32/include/QtWidgets/qsizepolicy.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qcursor.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qkeysequence.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qevent.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qvariant.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qmap.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qdebug.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qtextstream.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qlocale.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qset.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qcontiguouscache.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qurl.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qurlquery.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qfile.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qfiledevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qvector2d.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/qtouchdevice.h \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QThread \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/qthread.h \
+		E:/zl/install/5.6/mingw49_32/include/QtGui/QImage \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QFile \
+		E:/zl/install/5.6/mingw49_32/include/QtCore/QDebug
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\videothread.o videothread.cpp
 
 release/moc_mp4player.o: release/moc_mp4player.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_mp4player.o release\moc_mp4player.cpp
+
+release/moc_videothread.o: release/moc_videothread.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_videothread.o release\moc_videothread.cpp
 
 ####### Install
 

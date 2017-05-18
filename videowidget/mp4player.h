@@ -20,6 +20,7 @@ public:
 public slots:
     void openFile();
     void play();
+    void paintEvent(QPaintEvent *event);
 
 private slots:
     void mediaStateChanged(QMediaPlayer::State state);
@@ -36,6 +37,7 @@ private:
     QLabel *m_lab_show;
     VideoThread *mThread;
     QImage mImage; //记录当前的图像
+
 };
 
 #endif

@@ -54,6 +54,7 @@ MP4Player::MP4Player(QWidget *parent)
 
     mThread = new VideoThread;
     connect(mThread,SIGNAL(sig_sentOneFrame(QImage)),this,SLOT(slotGetOneFrame(QImage)));
+
 }
 
 MP4Player::~MP4Player()
@@ -63,9 +64,16 @@ MP4Player::~MP4Player()
 void MP4Player::slotGetOneFrame(QImage img)
 {
     mImage = img;
+    repaint();
+}
+
+void MP4Player::paintEvent(QPaintEvent *event)
+{
     QPixmap pixmap = QPixmap::fromImage(mImage.scaled(m_lab_show->size(), Qt::KeepAspectRatio) );
     m_lab_show->setPixmap(pixmap);
+
 }
+
 
 void MP4Player::openFile()
 {
@@ -85,10 +93,10 @@ void MP4Player::play()
 {
     switch(mediaPlayer.state()) {
     case QMediaPlayer::PlayingState:
-      //  mediaPlayer.pause();
+     // mediaPlayer.pause();
         break;
     default:
-    //    mediaPlayer.play();
+    //  mediaPlayer.play();
         break;
     }
 }

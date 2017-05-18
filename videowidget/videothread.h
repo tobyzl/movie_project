@@ -2,7 +2,7 @@
 #define VIDEOETHREAD_H
 
 #define WIN32DLL
-#define NBUFMAXSIZE 384 * 1024
+#define NBUFMAXSIZE 393216
 
 #include "mp4.h"
 #include "SE_VideoCodec.h"
@@ -22,13 +22,14 @@ public:
 
     void startPlay(QString infile);
     void play();
-    void decode(UCHAR *pBuf);
+    void decode(UCHAR *pBuf, unsigned long len);
 
 signals:
     void sig_sentOneFrame(QImage); //每获取到一帧图像 就发送此信号
 
 private:
     QString m_filename;
+    QImage image;
 
 };
 

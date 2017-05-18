@@ -44,7 +44,7 @@ void printText(FILE_INFO FileInfo)
 
 }
 
-void VideoThread::decode(UCHAR *pBuf)
+void VideoThread::decode(UCHAR *pBuf, unsigned long len)
 {
     UCHAR *ppHandle = NULL;
     UINT32 ok = SEVideo_Create(1, &ppHandle);
@@ -55,25 +55,28 @@ void VideoThread::decode(UCHAR *pBuf)
 
 
     UCHAR *inRawData = pBuf;
-    unsigned long inLen = NBUFMAXSIZE;
-    UCHAR outYUV420[inLen];
+    unsigned long inLen = len;
+    unsigned long max_len = NBUFMAXSIZE;
+    UCHAR outYUV420[max_len];
     unsigned long in_outLen;
     INT32 videoWidth;
     INT32 videoHeight;
     ok = SEVideo_Decode2YUV(ppHandle, inRawData, inLen, outYUV420, &in_outLen, &videoWidth, &videoHeight);
-    qDebug() << "2yuv ok : " << ok << endl;
-    qDebug() << "in_outLen : " << in_outLen << endl;
-    qDebug() << "videoWidth : " << videoWidth << endl;
+    qDebug() << "2yuv ok : " << ok;
+    qDebug() << "in_outLen : " << in_outLen;
+    qDebug() << "videoWidth : " << videoWidth ;
     qDebug() << "videoHeight : " << videoHeight << endl;
 
-    UCHAR outRGB24[inLen];
-    unsigned long in_outLen_24;
-    ok = SEVideo_YUV420toRGB24(outYUV420, inLen, outRGB24, &in_outLen_24, videoWidth, videoHeight);
-    qDebug() << "RGB24 ok :" << ok << endl;
-    qDebug() << in_outLen_24 << endl;
 
-    QImage image(outRGB24, videoWidth,videoHeight,QImage::Format_RGB888);
-    emit sig_sentOneFrame(image);  //发送信号
+    unsigned long in_outLen_24 = 700000;
+    UCHAR outRGB24[in_outLen_24];
+    ok = SEVideo_YUV420toRGB24(outYUV420, in_outLen, outRGB24, &in_outLen_24, videoWidth, videoHeight);
+    qDebug() << "RGB24 ok :" << ok;
+    qDebug() << "in_outLen_24 :" << in_outLen_24 << endl;
+
+    QImage tmpImg(outRGB24, videoWidth, videoHeight, QImage::Format_RGB888);
+    QImage image = tmpImg.copy();
+    emit sig_sentOneFrame(image);  //发送信号 */
 }
 
 void VideoThread::play()
@@ -104,13 +107,64 @@ void VideoThread::play()
             return;
         }
 
+        UCHAR *ppHandle = NULL;
+        UINT32 ok = SEVideo_Create(1, &ppHandle);
+        qDebug() << "creat ok :" << ok << endl;
+        if (ok = 0)
+        {
+            qDebug() << "SEVideo_Create failed" << endl;
+        }
+
         UINT32 nBufMaxSize = NBUFMAXSIZE; //393216
-        UCHAR pBuf[nBufMaxSize];
-        INT32 size =  SEMP4Read_ReadOneFrame(pHandle, pBuf, nBufMaxSize);
-        qDebug() << endl << "size " << size << endl;
+        UCHAR pBuf[nBufMaxSize] = {0};
+        INT32 size;
+
+        for (int i=0; ; i++)
+        {
+            qDebug() << endl << "i = " << i+1;
+            size = SEMP4Read_ReadOneFrame(pHandle, pBuf, nBufMaxSize);
+            qDebug() << "size = " <<  size << endl;
+            if (size < 0)
+            {
+                break;
+            }
+
+            UCHAR *pdata = pBuf + sizeof(RTSP_STREAM_HEAD);
+            RTSP_STREAM_HEAD *phead = (RTSP_STREAM_HEAD*)pBuf;
+         // qDebug() << "nAVCodecID = " <<  phead->nAVCodecID << endl;
+            qDebug() << "nParameter = " <<  (int)phead->nParameter << endl;
+          //qDebug() << "reserve1 = " <<  phead->reserve1 << endl;
+            qDebug() << "nStreamDataLen = " <<  phead->nStreamDataLen;
+            qDebug() << "nTimestamp = " <<  phead->nTimestamp << endl;
+           //decode(pdata, phead->nStreamDataLen);
+
+         // UCHAR *inRawData = pdata;
+            unsigned long inLen = phead->nStreamDataLen;
+            UCHAR outYUV420[nBufMaxSize];
+            unsigned long in_outLen;
+            INT32 videoWidth;
+            INT32 videoHeight;
+            ok = SEVideo_Decode2YUV(ppHandle, pdata, inLen, outYUV420, &in_outLen, &videoWidth, &videoHeight);
+            qDebug() << "2yuv ok : " << ok;
+            qDebug() << "in_outLen : " << in_outLen;
+            qDebug() << "videoWidth : " << videoWidth ;
+            qDebug() << "videoHeight : " << videoHeight << endl;
 
 
-        decode(pBuf);
+            unsigned long in_outLen_24 = 700000;
+            UCHAR outRGB24[in_outLen_24];
+            ok = SEVideo_YUV420toRGB24(outYUV420, in_outLen, outRGB24, &in_outLen_24, videoWidth, videoHeight);
+
+            qDebug() << "RGB24 ok :" << ok;
+            qDebug() << "in_outLen_24 :" << in_outLen_24 << endl;
+            Sleep(24);
+            QImage tmpImg(outRGB24, videoWidth, videoHeight, QImage::Format_RGB888);
+            image = tmpImg.copy();
+
+            emit sig_sentOneFrame(image);  //发送信号
+
+       }
+
 
 /*
     for(int i=0;;i++)

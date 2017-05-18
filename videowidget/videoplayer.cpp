@@ -74,21 +74,6 @@ QImage VideoPlayer::play()
        // return;
     }
 
-    //Parameter:
-    //	        pBuf = RTSP_STREAM_HEAD + raw_av_data
-    //
-    //return:
-    //	>=0 OK
-    //	< 0 FAIL
-    //		-1: nBufMaxSize<384KBytes
-    //		-2: please first call SEMP4Read_OpenMp4File
-    //		-3: read one frame fails
-   // UCHAR *pHandle;
-    UINT32 nBufMaxSize = 384 * 1024; //393216
-    UCHAR pBuf[nBufMaxSize];
-    INT32 size =  SEMP4Read_ReadOneFrame(pHandle, pBuf, nBufMaxSize);
-    qDebug() << endl << "size " << size << endl;
-
     UCHAR *ppHandle = NULL;
     UINT32 ok = SEVideo_Create(1, &ppHandle);
     if (ok = 0)
@@ -96,10 +81,21 @@ QImage VideoPlayer::play()
         qDebug() << "SEVideo_Create failed" << endl;
     }
 
+    UINT32 nBufMaxSize = 384 * 1024; //393216
+    UCHAR pBuf[nBufMaxSize];
+    QImage image;
 
-    UCHAR *inRawData = pBuf;
-    unsigned long inLen = nBufMaxSize;
-    UCHAR outYUV420[inLen];
+    for (int i=0; i<1; i++)
+    {
+    INT32 size =  SEMP4Read_ReadOneFrame(pHandle, pBuf, nBufMaxSize);
+    qDebug() << endl << "size " << size << endl;
+
+    UCHAR *pdata = pBuf + sizeof(RTSP_STREAM_HEAD);
+    RTSP_STREAM_HEAD *phead = (RTSP_STREAM_HEAD*)pBuf;
+
+    UCHAR *inRawData = pdata;
+    unsigned long inLen = phead->nStreamDataLen;
+    UCHAR outYUV420[nBufMaxSize];
     unsigned long in_outLen;
     INT32 videoWidth;
     INT32 videoHeight;
@@ -109,47 +105,19 @@ QImage VideoPlayer::play()
     qDebug() << "videoWidth : " << videoWidth << endl;
     qDebug() << "videoHeight : " << videoHeight << endl;
 
-    /*
-    UCHAR *inRawData = pBuf;
-    unsigned long inLen = nBufMaxSize;
-    UCHAR outRGB565[inLen];
-    unsigned long in_outLen;
-    INT32 videoWidth;
-    INT32 videoHeight;
-    ok = SEVideo_Decode2RGB565(ppHandle, inRawData, inLen, outRGB565, &in_outLen, &videoWidth, &videoHeight);
-
-    qDebug() << "rgb565 ok : " << ok << endl;
-    qDebug() << "in_outLen : " << in_outLen << endl;
-    qDebug() << "videoWidth : " << videoWidth << endl;
-    qDebug() << "videoHeight : " << videoHeight << endl;
-    */
-
-/*
-    //UCHAR *inYUV420Planar;
-    UCHAR outRGB565[inLen];
-    UINT32 in_outLen_565;
-    INT32 videoWidth_565 = videoWidth;
-    INT32 videoHeight_565 = videoHeight;
-    ok = SEVideo_YUV420toRGB565(ppHandle, outYUV420, outRGB565, &in_outLen_565,  videoWidth_565, videoHeight_565);
-
-    qDebug() << "RGB565 ok : " << ok << endl;
-    qDebug() << "in_outLen_565 : " << in_outLen_565 << endl;
-    qDebug() << "videoWidth_565 : " << videoWidth_565 << endl;
-    qDebug() << "videoHeight_565 : " << videoHeight_565 << endl;
-*/
-
-
    // UCHAR *inYUV420Planar;
     //unsigned long inLen;
-    UCHAR outRGB24[inLen];
+    UCHAR outRGB24[nBufMaxSize];
     unsigned long in_outLen_24;
    // INT32 videoWidth;
   //  INT32 videoHeight;
-    ok = SEVideo_YUV420toRGB24(outYUV420, inLen, outRGB24, &in_outLen_24, videoWidth, videoHeight);
+    ok = SEVideo_YUV420toRGB24(outYUV420, in_outLen, outRGB24, &in_outLen_24, videoWidth, videoHeight);
     qDebug() << "RGB24 ok :" << ok << endl;
     qDebug() << in_outLen_24 << endl;
 
-    QImage image(outRGB24, videoWidth,videoHeight,QImage::Format_RGB888);
+    QImage tmpImg(outRGB24, videoWidth, videoHeight, QImage::Format_RGB888);
+    image = tmpImg.copy();
+    }
     return image;
 
 }

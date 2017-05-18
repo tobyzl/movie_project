@@ -71,7 +71,6 @@ void MP4Player::paintEvent(QPaintEvent *event)
 {
     QPixmap pixmap = QPixmap::fromImage(mImage.scaled(m_lab_show->size(), Qt::KeepAspectRatio) );
     m_lab_show->setPixmap(pixmap);
-
 }
 
 

@@ -118,6 +118,7 @@ void VideoThread::play()
         UINT32 nBufMaxSize = NBUFMAXSIZE; //393216
         UCHAR pBuf[nBufMaxSize] = {0};
         INT32 size;
+        UINT32 preTimestamp = 0;
 
         for (int i=0; ; i++)
         {
@@ -157,7 +158,9 @@ void VideoThread::play()
 
             qDebug() << "RGB24 ok :" << ok;
             qDebug() << "in_outLen_24 :" << in_outLen_24 << endl;
-            Sleep(24);
+            Sleep(phead->nTimestamp - preTimestamp);
+            preTimestamp = phead->nTimestamp;
+
             QImage tmpImg(outRGB24, videoWidth, videoHeight, QImage::Format_RGB888);
             image = tmpImg.copy();
 

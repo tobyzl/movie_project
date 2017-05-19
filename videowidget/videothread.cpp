@@ -79,7 +79,21 @@ void VideoThread::decode(UCHAR *pBuf, unsigned long len)
     emit sig_sentOneFrame(image);  //发送信号 */
 }
 
+void VideoThread::pause()
+{
+    qDebug() << "pause.." << endl;
+    wait();
+ //   cond.wait(&mutex); //当处于wait状态时mutex会被暂时释放，并阻塞在这个地方；当线程被cond.wakeOne()等唤醒时，mutex又会被重新锁定，并继续运行
+  //  mutex.unlock();
+}
+
 void VideoThread::play()
+{
+     qDebug() << "paly.." << endl;
+  //   cond.wakeOne();
+}
+
+void VideoThread::run()
 {
         UCHAR *pHandle = NULL;
         UINT32 reg = SEMP4Read_Create(&pHandle);
@@ -147,11 +161,11 @@ void VideoThread::play()
             INT32 videoWidth;
             INT32 videoHeight;
             ok = SEVideo_Decode2YUV(ppHandle, pdata, inLen, outYUV420, &in_outLen, &videoWidth, &videoHeight);
-         /*   qDebug() << "2yuv ok : " << ok;
+ /*         qDebug() << "2yuv ok : " << ok;
             qDebug() << "in_outLen : " << in_outLen;
             qDebug() << "videoWidth : " << videoWidth ;
             qDebug() << "videoHeight : " << videoHeight << endl;
-         */
+*/
 
             unsigned long in_outLen_24 = 700000;
             UCHAR outRGB24[in_outLen_24];

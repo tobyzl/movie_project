@@ -9,6 +9,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include "videothread.h"
+#include "audiothread.h"
 
 class MP4Player : public QWidget
 {
@@ -19,7 +20,6 @@ public:
 
 public slots:
     void openFile();
-    void play();
     void paintEvent(QPaintEvent *event);
 
 private slots:
@@ -30,14 +30,20 @@ private slots:
 
     void slotGetOneFrame(QImage img);
 
+signals:
+    void play();
+    void pause();
+
 private:
     QPushButton *playButton;
     QSlider *positionSlider;
     QLineEdit *lineEdit;
     QLabel *m_lab_show;
-    VideoThread *mThread;
+    VideoThread *videoThread;
+    AudioThread *audioThread;
     QImage mImage; //记录当前的图像
     bool isplay;
+    QString mfilename;
 
 };
 

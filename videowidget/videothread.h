@@ -11,6 +11,8 @@
 #include <QImage>
 #include <QFile>
 #include <QDebug>
+#include <QWaitCondition>
+#include <QMutex>
 
 class VideoThread : public QThread
 {
@@ -21,18 +23,23 @@ public:
     ~VideoThread();
 
     void startPlay(QString infile);
-    void play();
     void decode(UCHAR *pBuf, unsigned long len);
+    void run();
 
 signals:
     void sig_sentOneFrame(QImage); //每获取到一帧图像 就发送此信号
     void positionChanged(qint64);
     void durationChanged(qint64);
 
+private slots:
+    void play();
+    void pause();
+
 private:
     QString m_filename;
     QImage image;
-
+    QWaitCondition cond;
+    QMutex mutex;
 };
 
 #endif // VIDEOETHREAD_H

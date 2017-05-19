@@ -7,7 +7,8 @@ MP4Player::MP4Player(QWidget *parent)
     , positionSlider(0)
     , lineEdit(0)
     , m_lab_show(0)
-    , mThread(0)
+    , videoThread(0)
+    , audioThread(0)
     , mImage(0)
     , isplay(true)
 {
@@ -45,11 +46,17 @@ MP4Player::MP4Player(QWidget *parent)
     setLayout(layout);
 
 
-    mThread = new VideoThread;
-    connect(mThread,SIGNAL(sig_sentOneFrame(QImage)),this,SLOT(slotGetOneFrame(QImage)));
+    videoThread = new VideoThread;
+    connect(videoThread,SIGNAL(sig_sentOneFrame(QImage)),this,SLOT(slotGetOneFrame(QImage)));
 
-    connect(mThread, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
-    connect(mThread, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
+    connect(videoThread, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
+    connect(videoThread, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
+
+    connect(this, SIGNAL(pause()), videoThread, SLOT(pause()));
+    connect(this, SIGNAL(play()), videoThread, SLOT(play()));
+
+    audioThread = new AudioThread;
+
 }
 
 MP4Player::~MP4Player()
@@ -71,21 +78,14 @@ void MP4Player::paintEvent(QPaintEvent *event)
 
 void MP4Player::openFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Movie"),QDir::homePath());
+    mfilename = QFileDialog::getOpenFileName(this, tr("Open Movie"),QDir::homePath());
 
-    if (!fileName.isEmpty()) {
-        lineEdit->setText(fileName);
+    if (!mfilename.isEmpty()) {
+        lineEdit->setText(mfilename);
 
-        mThread->startPlay(fileName);
-        mThread->play();
-
-        playButton->setEnabled(true);
+        videoThread->startPlay(mfilename);
+        audioThread->startPlay(mfilename);
     }
-}
-
-void MP4Player::play()
-{
-
 }
 
 void MP4Player::mediaStateChanged()
@@ -94,11 +94,13 @@ void MP4Player::mediaStateChanged()
     {
         playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
         isplay = false;
+        emit pause();
     }
     else
     {
         playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
         isplay = true;
+        emit play();
     }
 }
 

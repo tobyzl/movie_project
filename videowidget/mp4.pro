@@ -9,11 +9,15 @@ LIBS += -L../Qt_MP4/lib/lib/ -lSE_MP4 -lSE_AudioCodec -lSE_VideoCodec
 
 HEADERS = \
     mp4player.h \
-    videothread.h
+    videothread.h \
+    audiothread.h
+
 
 
 SOURCES = \
     main.cpp \
     mp4player.cpp \
-    videothread.cpp
+    videothread.cpp \
+    audiothread.cpp
+
 

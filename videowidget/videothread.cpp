@@ -62,17 +62,17 @@ void VideoThread::decode(UCHAR *pBuf, unsigned long len)
     INT32 videoWidth;
     INT32 videoHeight;
     ok = SEVideo_Decode2YUV(ppHandle, inRawData, inLen, outYUV420, &in_outLen, &videoWidth, &videoHeight);
-    qDebug() << "2yuv ok : " << ok;
+ /*   qDebug() << "2yuv ok : " << ok;
     qDebug() << "in_outLen : " << in_outLen;
     qDebug() << "videoWidth : " << videoWidth ;
-    qDebug() << "videoHeight : " << videoHeight << endl;
+    qDebug() << "videoHeight : " << videoHeight << endl; */
 
 
     unsigned long in_outLen_24 = 700000;
     UCHAR outRGB24[in_outLen_24];
     ok = SEVideo_YUV420toRGB24(outYUV420, in_outLen, outRGB24, &in_outLen_24, videoWidth, videoHeight);
-    qDebug() << "RGB24 ok :" << ok;
-    qDebug() << "in_outLen_24 :" << in_outLen_24 << endl;
+  /*  qDebug() << "RGB24 ok :" << ok;
+    qDebug() << "in_outLen_24 :" << in_outLen_24 << endl; */
 
     QImage tmpImg(outRGB24, videoWidth, videoHeight, QImage::Format_RGB888);
     QImage image = tmpImg.copy();
@@ -81,7 +81,7 @@ void VideoThread::decode(UCHAR *pBuf, unsigned long len)
 
 void VideoThread::play()
 {
-    UCHAR *pHandle = NULL;
+        UCHAR *pHandle = NULL;
         UINT32 reg = SEMP4Read_Create(&pHandle);
         if (reg < 0)
         {
@@ -94,6 +94,8 @@ void VideoThread::play()
         FILE_INFO FileInfo;
         INT32 ret = SEMP4Read_OpenMp4File(pHandle, pFilename, &FileInfo);
         printText(FileInfo);
+
+        emit durationChanged(FileInfo.nDurationInSecond * 1000);
         if (ret < 0)
         {
             qDebug() << "SEMP4Read_OpenMp4File failed" << endl;
@@ -109,7 +111,6 @@ void VideoThread::play()
 
         UCHAR *ppHandle = NULL;
         UINT32 ok = SEVideo_Create(1, &ppHandle);
-        qDebug() << "creat ok :" << ok << endl;
         if (ok = 0)
         {
             qDebug() << "SEVideo_Create failed" << endl;
@@ -122,9 +123,9 @@ void VideoThread::play()
 
         for (int i=0; ; i++)
         {
-            qDebug() << endl << "i = " << i+1;
+           // qDebug() << endl << "i = " << i+1;
             size = SEMP4Read_ReadOneFrame(pHandle, pBuf, nBufMaxSize);
-            qDebug() << "size = " <<  size << endl;
+          //  qDebug() << "size = " <<  size << endl;
             if (size < 0)
             {
                 break;
@@ -132,12 +133,12 @@ void VideoThread::play()
 
             UCHAR *pdata = pBuf + sizeof(RTSP_STREAM_HEAD);
             RTSP_STREAM_HEAD *phead = (RTSP_STREAM_HEAD*)pBuf;
-         // qDebug() << "nAVCodecID = " <<  phead->nAVCodecID << endl;
+    /*     // qDebug() << "nAVCodecID = " <<  phead->nAVCodecID << endl;
             qDebug() << "nParameter = " <<  (int)phead->nParameter << endl;
           //qDebug() << "reserve1 = " <<  phead->reserve1 << endl;
             qDebug() << "nStreamDataLen = " <<  phead->nStreamDataLen;
             qDebug() << "nTimestamp = " <<  phead->nTimestamp << endl;
-           //decode(pdata, phead->nStreamDataLen);
+           //decode(pdata, phead->nStreamDataLen); */
 
          // UCHAR *inRawData = pdata;
             unsigned long inLen = phead->nStreamDataLen;
@@ -146,18 +147,19 @@ void VideoThread::play()
             INT32 videoWidth;
             INT32 videoHeight;
             ok = SEVideo_Decode2YUV(ppHandle, pdata, inLen, outYUV420, &in_outLen, &videoWidth, &videoHeight);
-            qDebug() << "2yuv ok : " << ok;
+         /*   qDebug() << "2yuv ok : " << ok;
             qDebug() << "in_outLen : " << in_outLen;
             qDebug() << "videoWidth : " << videoWidth ;
             qDebug() << "videoHeight : " << videoHeight << endl;
-
+         */
 
             unsigned long in_outLen_24 = 700000;
             UCHAR outRGB24[in_outLen_24];
             ok = SEVideo_YUV420toRGB24(outYUV420, in_outLen, outRGB24, &in_outLen_24, videoWidth, videoHeight);
-
+       /*
             qDebug() << "RGB24 ok :" << ok;
             qDebug() << "in_outLen_24 :" << in_outLen_24 << endl;
+            */
             Sleep(phead->nTimestamp - preTimestamp);
             preTimestamp = phead->nTimestamp;
 
@@ -165,22 +167,9 @@ void VideoThread::play()
             image = tmpImg.copy();
 
             emit sig_sentOneFrame(image);  //发送信号
-
+            emit positionChanged(phead->nTimestamp);
        }
 
-
-/*
-    for(int i=0;;i++)
-    {
-        if (feof(fp_yuv)) break;
-
-        int readedsize = fread(yuvBuffer,1,yuvSize,fp_yuv);
-
-
-        //把这个RGB数据 用QImage加载
-        QImage tmpImg((uchar *)rgbBuffer,width,height,QImage::Format_RGB32);
-        QImage image = tmpImg.copy(); //把图像复制一份 传递给界面显示
-        emit sig_GetOneFrame(image);  //发送信号
-
-    }*/
+       SEMP4_Destroy(&pHandle);
+       SEVideo_Destroy(&ppHandle);
 }

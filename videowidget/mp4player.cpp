@@ -1,25 +1,23 @@
 #include "mp4player.h"
 #include <QtWidgets>
-#include <qvideowidget.h>
-#include <qvideosurfaceformat.h>
 
 MP4Player::MP4Player(QWidget *parent)
     : QWidget(parent)
-    , mediaPlayer(0, QMediaPlayer::VideoSurface)
     , playButton(0)
     , positionSlider(0)
+    , lineEdit(0)
+    , m_lab_show(0)
+    , mThread(0)
+    , mImage(0)
+    , isplay(true)
 {
-    QVideoWidget *videoWidget = new QVideoWidget;
-
     QAbstractButton *searchButton = new QPushButton(tr("Open..."));
     connect(searchButton, SIGNAL(clicked()), this, SLOT(openFile()));
 
     playButton = new QPushButton;
-    playButton->setEnabled(false);
+    isplay = true;
     playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
-
-    connect(playButton, SIGNAL(clicked()),
-            this, SLOT(play()));
+    connect(playButton, SIGNAL(clicked()), this, SLOT(mediaStateChanged()));
 
     positionSlider = new QSlider(Qt::Horizontal);
     positionSlider->setRange(0, 0);
@@ -46,15 +44,12 @@ MP4Player::MP4Player(QWidget *parent)
 
     setLayout(layout);
 
-    mediaPlayer.setVideoOutput(videoWidget);
-    connect(&mediaPlayer, SIGNAL(stateChanged(QMediaPlayer::State)),
-            this, SLOT(mediaStateChanged(QMediaPlayer::State)));
-    connect(&mediaPlayer, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
-    connect(&mediaPlayer, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
 
     mThread = new VideoThread;
     connect(mThread,SIGNAL(sig_sentOneFrame(QImage)),this,SLOT(slotGetOneFrame(QImage)));
 
+    connect(mThread, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
+    connect(mThread, SIGNAL(durationChanged(qint64)), this, SLOT(durationChanged(qint64)));
 }
 
 MP4Player::~MP4Player()
@@ -90,25 +85,20 @@ void MP4Player::openFile()
 
 void MP4Player::play()
 {
-    switch(mediaPlayer.state()) {
-    case QMediaPlayer::PlayingState:
-     // mediaPlayer.pause();
-        break;
-    default:
-    //  mediaPlayer.play();
-        break;
-    }
+
 }
 
-void MP4Player::mediaStateChanged(QMediaPlayer::State state)
+void MP4Player::mediaStateChanged()
 {
-    switch(state) {
-    case QMediaPlayer::PlayingState:
+    if (isplay)
+    {
         playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
-        break;
-    default:
+        isplay = false;
+    }
+    else
+    {
         playButton->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
-        break;
+        isplay = true;
     }
 }
 
@@ -124,6 +114,6 @@ void MP4Player::durationChanged(qint64 duration)
 
 void MP4Player::setPosition(int position)
 {
-    mediaPlayer.setPosition(position);
+
 }
 

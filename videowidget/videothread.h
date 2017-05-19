@@ -26,6 +26,8 @@ public:
 
 signals:
     void sig_sentOneFrame(QImage); //每获取到一帧图像 就发送此信号
+    void positionChanged(qint64);
+    void durationChanged(qint64);
 
 private:
     QString m_filename;

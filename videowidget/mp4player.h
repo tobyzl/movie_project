@@ -4,7 +4,7 @@
 #include <QtGui/QMovie>
 #include <QtWidgets/QWidget>
 #include <qmediaplayer.h>
-#include <QAbstractButton>
+#include <QPushButton>
 #include <QSlider>
 #include <QLabel>
 #include <QLineEdit>
@@ -23,20 +23,21 @@ public slots:
     void paintEvent(QPaintEvent *event);
 
 private slots:
-    void mediaStateChanged(QMediaPlayer::State state);
+    void mediaStateChanged();
     void positionChanged(qint64 position);
     void durationChanged(qint64 duration);
     void setPosition(int position);
 
     void slotGetOneFrame(QImage img);
+
 private:
-    QMediaPlayer mediaPlayer;
-    QAbstractButton *playButton;
+    QPushButton *playButton;
     QSlider *positionSlider;
     QLineEdit *lineEdit;
     QLabel *m_lab_show;
     VideoThread *mThread;
     QImage mImage; //记录当前的图像
+    bool isplay;
 
 };
 
